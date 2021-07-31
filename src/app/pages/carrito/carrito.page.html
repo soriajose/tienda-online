@@ -1,0 +1,46 @@
+<ion-header color="dark">
+    <ion-toolbar color="dark">
+        <ion-title>Carrito</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="dark">
+
+    <ion-grid color="dark">
+        <ion-row color="dark">
+            <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let item of listaCarrito" color="dark">
+
+                <ion-list class="ion-list" color="dark">
+                    <ion-item color="dark">
+                        <ion-label>
+                            <ion-avatar>
+                                <img [src]="item.image">
+                            </ion-avatar>
+                            <h4>Precio: {{item.price | currency:'ARS':'$'}}</h4>
+                        </ion-label>
+                        <ion-button slot="end" (click)="quitarProducto(item)">
+                            <ion-icon name="close-outline"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+
+                </ion-list>
+
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+    <ion-label class="ion-padding">
+        <h4>Importe total: {{suma | currency:'ARS':'$'}}</h4>
+    </ion-label>
+</ion-content>
+
+
+<ion-footer class="ion-no-border" color="dark">
+    <ion-toolbar color="dark">
+        <ion-button color="success" expand="block" shape="round" (click)="finalizarPedido()">
+            Finalizar pedido
+            <ion-icon name="logo-whatsapp"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
+</ion-footer>

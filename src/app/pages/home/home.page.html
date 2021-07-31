@@ -1,0 +1,48 @@
+<ion-header color="dark">
+    <ion-toolbar color="dark">
+        <ion-title>Tienda</ion-title>
+        <ion-button (click)="abrirCarrito()" [routerLink]="['/carrito']" slot="end">
+            <ion-icon name="cart-outline">
+
+            </ion-icon>
+            <span class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger">
+              {{productoCarrito.length}}
+            </span>
+        </ion-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+
+    <ion-grid fixed>
+
+        <ion-row>
+
+            <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12" *ngFor="let producto of productos">
+
+                <ion-card>
+                    <ion-card-header>
+                        <ion-card-title>{{producto.title}}</ion-card-title>
+                    </ion-card-header>
+
+                    <img [src]="producto.image">
+
+                    <ion-card-content>
+                        <h2>{{producto.price | currency:'ARS':'$'}}</h2>
+                        <!--
+                        <div>{{producto.price | currency:'ARS':'$'}}</div>
+                        -->
+                    </ion-card-content>
+                    <ion-button class="color-primary" expand="block" (click)="agregarProducto(producto)">
+                        Agregar al carrito
+                    </ion-button>
+                </ion-card>
+
+            </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+
+</ion-content>
